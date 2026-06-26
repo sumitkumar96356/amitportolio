@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary-blue: #2563EB;
+  --color-secondary-dark: #0F172A;
+  --color-accent-sky: #38BDF8;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary: #2563eb;
+  --secondary: #0f172a;
+  --accent: #38bdf8;
+  --text-muted: #64748b;
+  --border-color: rgba(15, 23, 42, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-glow: rgba(37, 99, 235, 0.05);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #070b14;
+  --foreground: #f1f5f9;
+  --primary: #3b82f6;
+  --secondary: #f1f5f9;
+  --accent: #38bdf8;
+  --text-muted: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(15, 23, 42, 0.45);
+  --card-glow: rgba(56, 189, 248, 0.08);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 12px 40px -10px var(--card-glow);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Background gradient blobs */
+.gradient-blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+}
+
+.dark .gradient-blob {
+  opacity: 0.25;
+}
+
+/* Custom styling for timeline and other widgets */
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent);
 }
