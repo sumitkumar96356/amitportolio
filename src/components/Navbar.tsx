@@ -58,7 +58,7 @@ export default function Navbar() {
               A
             </div>
             <span className="font-bold text-lg tracking-tight text-slate-800 dark:text-white transition-colors duration-300">
-              Amit Pal
+              Amit Kumar Pal
             </span>
           </a>
 
