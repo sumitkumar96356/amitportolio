@@ -86,7 +86,7 @@ export default function About() {
             </h3>
             
             <p className="text-sm md:text-base leading-relaxed">
-              I am an experienced E-commerce Manager with more than 10 years of expertise in managing online marketplaces, product catalog operations, inventory management, order processing, and data administration. Throughout my career, I have successfully worked with leading marketplaces including <span className="font-semibold text-slate-900 dark:text-white">Amazon, Flipkart, Meesho, Snapdeal, Paytm, Limeroad, and Shopify</span> store management.
+              I am an experienced E-commerce Manager with more than 10 years of expertise in managing online marketplaces, product catalog operations, inventory management, order processing, and data administration. Throughout my career, I have successfully worked with leading marketplaces including <span className="font-semibold text-slate-900 dark:text-white">Amazon, Flipkart, Meesho, Myntra, Snapdeal, Paytm, Limeroad, and Shopify</span> store management.
             </p>
 
             <p className="text-sm md:text-base leading-relaxed">

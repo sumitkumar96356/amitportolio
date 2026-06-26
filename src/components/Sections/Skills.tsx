@@ -19,7 +19,7 @@ const TECHNICAL_CATEGORIES = [
   {
     title: 'Marketplace & Platforms',
     icon: <Layers size={20} className="text-primary-blue dark:text-accent-sky" />,
-    skills: ['Amazon', 'Flipkart', 'Meesho', 'Snapdeal', 'Paytm', 'Limeroad', 'Shopify Store']
+    skills: ['Amazon', 'Flipkart', 'Meesho', 'Myntra', 'Snapdeal', 'Paytm', 'Limeroad', 'Shopify Store']
   },
   {
     title: 'E-commerce Operations',

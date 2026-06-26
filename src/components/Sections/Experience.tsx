@@ -11,6 +11,7 @@ interface Job {
   duration: string;
   responsibilities: string[];
   platforms?: string[];
+  managerialExpertise?: string[];
 }
 
 const EXPERIENCES: Job[] = [
@@ -29,7 +30,14 @@ const EXPERIENCES: Job[] = [
       'Prepared business reports using Excel (VLOOKUP, Pivot Tables & Data Validation).',
       'Handled portal settlements, TDS claims and coordination with internal teams.'
     ],
-    platforms: ['Amazon', 'Flipkart', 'Meesho', 'Snapdeal', 'Paytm', 'Limeroad', 'Shopify']
+    managerialExpertise: [
+      'Managed Google Ads and marketplace advertising campaigns.',
+      'Handled product pricing strategy, coupon creation and promotional campaigns.',
+      'Coordinated with warehouse teams for inventory availability and order fulfillment.',
+      'Managed marketplace offers, discounts and campaign planning.',
+      'Worked closely with cross-functional teams to ensure smooth end-to-end e-commerce operations.'
+    ],
+    platforms: ['Amazon', 'Flipkart', 'Meesho', 'Myntra', 'Snapdeal', 'Paytm', 'Limeroad', 'Shopify']
   },
   {
     company: 'ABGS Group Data Outsources Pvt. Ltd.',
@@ -38,7 +46,7 @@ const EXPERIENCES: Job[] = [
     responsibilities: [
       'Product uploads, marketplace operations, inventory updates and data validation.'
     ],
-    platforms: ['Amazon', 'Flipkart', 'Snapdeal', 'Paytm', 'Meesho', 'Shopify']
+    platforms: ['Amazon', 'Flipkart', 'Meesho', 'Myntra', 'Snapdeal', 'Paytm', 'Shopify']
   },
   {
     company: 'ICICI Bank (3i-Infotech Payroll)',
@@ -178,6 +186,23 @@ export default function Experience() {
                             ))}
                           </ul>
                         </div>
+
+                        {/* Managerial Expertise list */}
+                        {job.managerialExpertise && (
+                          <div className="flex flex-col gap-3">
+                            <h4 className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Managerial Expertise</h4>
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                              {job.managerialExpertise.map((exp, expIdx) => (
+                                <li key={expIdx} className="flex gap-2.5 items-start text-xs leading-relaxed text-slate-650 dark:text-slate-300">
+                                  <span className="p-0.5 rounded-full bg-amber-500/10 text-amber-500 dark:bg-amber-500/20 shrink-0 mt-0.5">
+                                    <Check size={10} className="stroke-[3px]" />
+                                  </span>
+                                  <span>{exp}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
 
                         {/* Platforms tag cloud */}
                         {job.platforms && (

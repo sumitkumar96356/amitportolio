@@ -13,67 +13,7 @@ export default function Hero() {
     }
   };
 
-  const handleDownloadResume = () => {
-    // Generate a simple text resume file download dynamically
-    const resumeText = `AMIT KUMAR PAL
-E-commerce Manager
-Phone: +91-9555910226
-Email: amitpal.125@gmail.com
-Location: New Delhi, India
 
-PROFESSIONAL SUMMARY:
-Results-driven E-commerce Manager with 10+ years of experience managing complete marketplace operations. Experienced in handling 18,000+ SKUs and supporting 2,000+ daily orders across Amazon, Flipkart, Meesho, Snapdeal and other marketplaces. Strong expertise in Shopify, Google Ads, SEO, Amazon A+ Content, inventory management, catalog optimization and advanced MS Excel.
-
-PROFESSIONAL EXPERIENCE:
-1. Nutex Apparel Limited | E-commerce Manager | Feb 2017 - Present
-   - Managed complete e-commerce operations across multiple marketplaces.
-   - Managed a catalog of 18,000+ products.
-   - Handled approximately 2,000 customer orders daily with the operations team.
-   - Managed product listings, inventory, pricing and catalog optimization.
-   - Worked on Shopify store management.
-   - Created Amazon A+ Content and optimized listings.
-   - Managed Google Ads and SEO activities.
-   - Prepared business reports using Excel (VLOOKUP, Pivot Tables & Data Validation).
-   - Handled portal settlements, TDS claims and coordination with internal teams.
-
-2. ABGS Group Data Outsources Pvt. Ltd. | Jan 2016 - Jan 2017
-   - Product uploads, marketplace operations, inventory updates and data validation.
-
-3. ICICI Bank (3i-Infotech Payroll) | Data Entry Executive | Jan 2014 - Dec 2015
-   - Customer database management and Excel reporting.
-
-CORE SKILLS:
-- End-to-End E-commerce Operations
-- Amazon, Flipkart, Meesho, Snapdeal, Paytm, Limeroad, Shopify
-- Shopify Store Management
-- Amazon A+ Content
-- Google Ads
-- SEO (On-Page & Off-Page)
-- MS Excel (VLOOKUP, Pivot Tables, Data Validation)
-- Inventory & Order Management
-- Catalog Management
-- Portal Settlement & TDS Claims
-- Team Collaboration
-
-EDUCATION:
-- B.A. - C.S.J.M University
-- Intermediate - CBSE
-- High School - CBSE
-
-TECHNICAL QUALIFICATION:
-- Hardware & Networking - Jetking Kanpur
-- Tally 7.2`;
-
-    const blob = new Blob([resumeText], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Amit_Kumar_Pal_Resume.txt';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <section className="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden">
@@ -140,13 +80,14 @@ TECHNICAL QUALIFICATION:
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             >
-              <button
-                onClick={handleDownloadResume}
+              <a
+                href="/assets/Amit_Kumar_Pal_Resume.pdf"
+                download="Amit_Kumar_Pal_Resume.pdf"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-white bg-primary-blue hover:bg-blue-600 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 transition-all duration-300 cursor-pointer text-sm"
               >
                 <Download size={16} />
                 Download Resume
-              </button>
+              </a>
               
               <a
                 href="#contact"
