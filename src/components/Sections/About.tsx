@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Card } from '../ui/Card';
 import { Sparkles, Database, CheckSquare, Target } from 'lucide-react';
 
@@ -53,25 +54,37 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: Visual highlights (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            {HIGHLIGHTS.map((item, index) => (
-              <Card
-                key={index}
-                delay={index * 0.1}
-                whileHover={{ x: 8 }}
-                className="flex gap-4 items-start bg-white dark:bg-slate-900/40 p-5"
-              >
-                <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
-                  {item.icon}
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h3 className="font-bold text-base text-slate-800 dark:text-white">{item.title}</h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
+          {/* Left Column: Profile Picture (5 cols) */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 flex justify-center lg:justify-start"
+          >
+            <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-full lg:max-w-[380px] aspect-square rounded-2xl overflow-hidden glass-card p-2 group shadow-2xl">
+              {/* Outer decorative gradient border */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary-blue via-accent-sky to-indigo-500 opacity-20 group-hover:opacity-40 transition-opacity duration-500 rounded-2xl" />
+              
+              {/* Profile Image Wrapper */}
+              <div className="relative w-full h-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
+                <Image
+                  src="/assets/profile.png"
+                  alt="Amit Kumar Pal"
+                  fill
+                  sizes="(max-w-768px) 100vw, 350px"
+                  priority
+                  className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+              </div>
+
+              {/* Decorative floating widget */}
+              <div className="absolute -bottom-1 -right-1 bg-white dark:bg-slate-900 border border-slate-900/10 dark:border-white/10 rounded-xl px-3 py-2 shadow-lg flex items-center gap-2 group-hover:-translate-y-1 transition-transform duration-300">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[11px] font-semibold text-slate-800 dark:text-white">Active Now</span>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Right Column: Text content (7 cols) */}
           <motion.div
@@ -111,6 +124,27 @@ export default function About() {
           </motion.div>
 
         </div>
+
+        {/* Highlights Row (Below the main info) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+          {HIGHLIGHTS.map((item, index) => (
+            <Card
+              key={index}
+              delay={index * 0.1}
+              whileHover={{ y: -8 }}
+              className="flex gap-4 items-start bg-white dark:bg-slate-900/40 p-6 border border-slate-900/5 dark:border-white/5 shadow-md"
+            >
+              <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
+                {item.icon}
+              </div>
+              <div className="flex flex-col gap-1">
+                <h3 className="font-bold text-base text-slate-800 dark:text-white">{item.title}</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+
       </div>
     </section>
   );
